@@ -38,4 +38,5 @@ body {
     pointer-events: inherit;
     transition: .2s all ease-in-out;
     opacity: 1;
-    left: 0; }
+    left: 0;
+}

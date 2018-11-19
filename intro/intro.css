@@ -8,15 +8,16 @@ body {
 }
 
 #start_btn {
-    height: 125px;
-    width: 125px;
+    height: 250px;
+    width: 250px;
     border: grey 2px double;
-    border-radius: 90px;
+    border-radius: 180px;
     background-color: lightgray;
     position: absolute;
     top: 48%;
     left: 48%;
-
+    font-size: 50px;
+    background-color: lightgreen;
 }
 
 .slider-container {
@@ -39,4 +40,16 @@ body {
     transition: .2s all ease-in-out;
     opacity: 1;
     left: 0;
+}
+
+a {
+    font-size: 40px;
+    text-decoration: none;
+}
+
+#menuLinks {
+    text-align: center;
+    display: flex;
+    flex-wrap: ;
+    justify-content: space-between;
 }

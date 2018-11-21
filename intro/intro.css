@@ -8,15 +8,22 @@ body {
 }
 
 #start_btn {
-    height: 500px;
+    max-width: 80%;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    height: 150px;
     width: 500px;
-    border: grey 2px double;
-    border-radius: 360px;
-    position: relative;
-    top: 27%;
-    left: 45%;
-    font-size: 100px;
-    background-color: lightgreen;
+    text-align: center;
+    background-color: lightgrey;
+    display: inline-block;
+}
+
+#nappi {
+    width: 80%;
+    height: 20%;
+    border-radius: 10px;
+    font-size: 16px;
 }
 
 .slider-container {
@@ -24,13 +31,13 @@ body {
 }
 
 .slider-container .slider-parent {
-    height: 76vh;
-    max-width: 250px;
+    height: 60vh;
+    max-width: 30%;
     width: 100%;
     background: #6C7A89;
-    position: absolute;
+    position: relative;
     left: -250px;
-    top: 50px;
+    top: 0;
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
@@ -48,6 +55,7 @@ body {
 a {
     font-size: 40px;
     text-decoration: none;
+    font-family: 'Alegreya Sans SC', sans-serif;
 }
 
 h1 {
@@ -67,27 +75,34 @@ h1 {
 
 header {
     background-color: blue;
-    margin-bottom: 10px;
 }
 
 footer {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    text-transform: uppercase;
+    height: 90px;
+    line-height: 90px;
     text-align: center;
-    padding: 20px;
-    margin-top: 30px;
-    color: white;
-    background-color: #0f0f40;
-    left: 0;
-    bottom: 0;
-    height: 100px;
-    width: 100%;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: red;
 }
 
 #menuLinks {
     text-align: center;
-    line-height: 800%;
+    height: 60vh;
+    line-height: 100px;
 }
 
 
 body {
     background-color: ghostwhite;
+}
+
+.container {
+    max-width: 60%;
+    margin: auto;
+    background: white;
+    padding: 10px;
 }

@@ -8,21 +8,27 @@
     <title>intro</title>
 
 </head>
+
 <body>
 
-<div class="container">
-    <header>
-        <h1 id="logo">Hello</h1>
-    </header>
+<header>
+    <h1 id="logo">cooper</h1>
+    <button href="#" class="slider-trigger">
+        <img id="burger" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/440px-Hamburger_icon.svg.png">
+    </button>
+</header>
+
+<div class="content">
 
     <div class="slider-container">
 
-        <a href="#" class="slider-trigger">Menu</a>
-
         <div id="start_btn">
-            <p>Paina nappia aloittaaksesi testin</p>
-            <button id="nappi" onclick="location.href='main/main.hmtl'">Start</button>
-            <P>12:00</P>
+            <div id="btn_content">
+                <button id="nappi" onclick="location.href='main/main.hmtl'">
+                    <img id="juoksunappi" src="https://gentsac.com.au/wp-content/uploads/2015/05/man-running.png">
+                </button>
+                <p id="timer"></p>
+            </div>
         </div>
 
 
@@ -35,10 +41,6 @@
         </div>
     </div>
 
-
-    <footer>
-        <h1>Hello</h1>
-    </footer>
 </div>
 
 <script src="intro.js"></script>

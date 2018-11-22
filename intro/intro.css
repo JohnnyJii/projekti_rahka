@@ -4,34 +4,38 @@ body {
     margin: 0;
 }
 
-#start_btn {
-    max-width: 90%;
-    margin: auto;
-    position: absolute;
-    top: 50%; left: 0; bottom: 0; right: 0;
-    height: 100%;
-    width: 90%;
-    text-align: center;
-}
-
-#btn_content {
-    max-width: 100%;
-    margin: auto;
-    position: relative;
-    top: 50%; left: 0; bottom: 0; right: 0;
-    height: 90%;
-    width: 90%;
-    text-align: center;
-    display: block;
-}
-
-#nappi {
-    width: 600px;
-    height: 350px;
+header {
+    background-color: #fff;
+    width: 100%;
+    height: 250px;
     font-size: 80px;
-    text-transform: uppercase;
-    background: transparent;
-    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    font-size: 100px;
+    text-decoration: none;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+#start_btn {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    margin-top: 50%;
+    margin-bottom: 50%;
+}
+
+
+#kuvanappi {
+    width: 82%;
+    position: relative;
+    height: 400px;
+    background: url("https://gentsac.com.au/wp-content/uploads/2015/05/man-running.png") no-repeat;
+    border: 10px solid black;
+    border-radius: 30px;
 }
 
 .slider-container {
@@ -42,10 +46,10 @@ body {
     height: 1600px;
     max-width: 100%;
     width: 100%;
-    background: #6C7A89;
+    background-color: white;
     position: absolute;
     left: 0;
-    top: -150px;
+    top: 0;
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
@@ -71,17 +75,6 @@ body {
     width: 100px;
 }
 
-#juoksunappi {
-    width: 100%;
-    height: 100%;
-    border-radius: 40px;
-}
-
-a {
-    font-size: 100px;
-    text-decoration: none;
-    font-family: 'Alegreya Sans SC', sans-serif;
-}
 
 #logo {
     font-family: 'Alegreya Sans SC', sans-serif;
@@ -95,21 +88,10 @@ a {
 }
 
 
-header {
-    background-color: blue;
-    width: 100%;
-    height: 200px;
-    font-size: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
 #menuLinks {
     text-align: center;
-    height: 60vh;
-    line-height: 100px;
+    height: 100%;
+    line-height: 3100%;
 }
 
 
@@ -118,7 +100,6 @@ header {
     max-height: 100%;
     margin: auto;
     padding: 0;
-    margin: 0;
     position: relative;
 }
 

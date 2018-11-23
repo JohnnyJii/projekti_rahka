@@ -1,3 +1,4 @@
+'use strict';
 let sliderTrigger = document.getElementsByClassName("slider-trigger")[0];
 let slider = document.getElementsByClassName('slider-parent')[0];
 

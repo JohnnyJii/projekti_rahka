@@ -1,5 +1,5 @@
-var sliderTrigger = document.getElementsByClassName("slider-trigger")[0];
-var slider = document.getElementsByClassName('slider-parent')[0];
+let sliderTrigger = document.getElementsByClassName("slider-trigger")[0];
+let slider = document.getElementsByClassName('slider-parent')[0];
 
 sliderTrigger.addEventListener( "click" , function(el){
 

@@ -11,3 +11,6 @@ sliderTrigger.addEventListener( "click" , function(el){
 
 });
 
+
+
+

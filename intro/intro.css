@@ -38,6 +38,10 @@ a {
     border-radius: 30px;
 }
 
+#kuvanappi.hover {
+    background-color: blue;
+}
+
 .slider-container {
     position: relative;
 }
@@ -91,7 +95,7 @@ a {
 #menuLinks {
     text-align: center;
     height: 100%;
-    line-height: 3100%;
+    line-height: 3000%;
 }
 
 

@@ -19,6 +19,7 @@ function Timer () {
   let downloadTimer = setInterval(function(){
     timeleft--;
     document.getElementById("timer").innerHTML = timeleft;
+
     if(timeleft <= 0)
       clearInterval(downloadTimer);
   },1000);

@@ -11,6 +11,17 @@ sliderTrigger.addEventListener( "click" , function(el){
 
 });
 
+let nappi = document.querySelector('#kuvanappi');
 
+function Timer () {
+  let timeleft = 6;
+  let downloadTimer = setInterval(function(){
+    timeleft--;
+    document.getElementById("timer").innerHTML = timeleft;
+    if(timeleft <= 0)
+      clearInterval(downloadTimer);
+  },1000);
+}
 
+nappi.addEventListener('click', Timer);
 

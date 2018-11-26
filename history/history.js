@@ -12,9 +12,9 @@ sliderTrigger.addEventListener( "click" , function(el){
 
 });
 
-window.onload = function () {
+ window.onload = function () {
 
-  let chart = new CanvasJS.Chart("chartContainer", {
+  const chart = new CanvasJS.Chart("chartContainer", {
     animationEnabled: true,
     theme: "light2",
     title:{
@@ -26,7 +26,7 @@ window.onload = function () {
     data: [{
       type: "line",
       dataPoints: [
-        { y: 1700 },
+        { y: 1600 },
         { y: 1800 },
         { y: 1900 },
         { y: 1900 },
@@ -35,8 +35,7 @@ window.onload = function () {
         { y: 2200 },
         { y: 2000 },
         { y: 2200 },
-        { y: 2600 },
-        { y: 2500 }
+        { y: 2600 }
       ]
     }]
   });

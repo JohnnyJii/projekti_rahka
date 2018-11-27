@@ -12,11 +12,27 @@ sliderTrigger.addEventListener( "click" , function(el){
 
 });
 
-let nappi = document.querySelector('#kuvanappi');
+document.getElementById("kuvanappi").addEventListener("click", startTimer);
 
-function Timer () {
+function startTimer () {
+  let minutesLabel = document.getElementById("minutes");
+  let secondsLabel = document.getElementById("seconds");
+  let totalSeconds = 720;
+  setInterval(setTime, 1000);
 
+  function setTime() {
+    totalSeconds--;
+    secondsLabel.innerHTML = pad(totalSeconds % 60);
+    minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+  }
+
+  function pad(val) {
+    let valString = val + "";
+    if (valString.length < 2) {
+      return "0" + valString;
+    } else {
+      return valString;
+    }
+  }
 }
-
-nappi.addEventListener('click', Timer);
 

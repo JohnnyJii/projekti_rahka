@@ -17,7 +17,7 @@ document.getElementById("kuvanappi").addEventListener("click", startTimer);
 function startTimer () {
   let minutesLabel = document.getElementById("minutes");
   let secondsLabel = document.getElementById("seconds");
-  let totalSeconds = 720;
+  let totalSeconds = 5;
   setInterval(setTime, 1000);
 
   function setTime() {
@@ -25,6 +25,10 @@ function startTimer () {
     secondsLabel.innerHTML = pad(totalSeconds % 60);
     minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
   }
+  if (totalSeconds <= 0) {
+    clearInterval(setTime);
+  }
+
 
   function pad(val) {
     let valString = val + "";

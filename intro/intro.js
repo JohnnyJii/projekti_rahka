@@ -17,15 +17,19 @@ document.getElementById("kuvanappi").addEventListener("click", startTimer);
 function startTimer () {
   let minutesLabel = document.getElementById("minutes");
   let secondsLabel = document.getElementById("seconds");
-  let totalSeconds = 720;
+  let totalSeconds = 5;
   let aika = setInterval(setTime, 1000);
 
   function setTime() {
     totalSeconds--;
     secondsLabel.innerHTML = pad(totalSeconds % 60);
     minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-    if (totalSeconds === 0) {
+    if (totalSeconds < 0) {
       clearInterval(aika);
+      let el = document.querySelector('#timer');
+      let newEl = document.createElement('p');
+      newEl.innerHTML = '<label id="lopputeksti">testi päättyi</label>';
+      el.parentNode.replaceChild(newEl, el);
     }
   }
 

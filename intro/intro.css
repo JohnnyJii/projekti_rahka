@@ -25,11 +25,19 @@ a {
     position: absolute;
     text-align: center;
     margin-top: 50%;
-    margin-bottom: 50%;
 }
 
 
 #kuvanappi {
+    width: 82%;
+    position: relative;
+    height: 400px;
+    background: url("https://gentsac.com.au/wp-content/uploads/2015/05/man-running.png") no-repeat;
+    border: 10px solid black;
+    border-radius: 30px;
+}
+
+#kuvanappi:active {
     width: 82%;
     position: relative;
     height: 400px;
@@ -140,5 +148,11 @@ a {
 }
 
 #timer {
-    font-size: 100px;
+    font-size: 130px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+#lopputeksti {
+    font-size: 130px;
+    font-family: 'Alegreya Sans SC', sans-serif;
 }

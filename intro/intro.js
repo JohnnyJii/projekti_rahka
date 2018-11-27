@@ -18,15 +18,15 @@ function startTimer () {
   let minutesLabel = document.getElementById("minutes");
   let secondsLabel = document.getElementById("seconds");
   let totalSeconds = 5;
-  setInterval(setTime, 1000);
+  let aika = setInterval(setTime, 1000);
 
   function setTime() {
     totalSeconds--;
     secondsLabel.innerHTML = pad(totalSeconds % 60);
     minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-  }
-  if (totalSeconds <= 0) {
-    clearInterval(setTime);
+    if (totalSeconds === 0) {
+      clearInterval(aika);
+    }
   }
 
 
@@ -38,5 +38,6 @@ function startTimer () {
       return valString;
     }
   }
+
 }
 

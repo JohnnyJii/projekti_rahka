@@ -66,6 +66,7 @@ a {
     transition: .4s all ease-in-out;
     opacity: 1;
     top: 0;
+    z-index: 2;
 }
 
 .slider-trigger {
@@ -110,4 +111,16 @@ a {
 #timer {
     font-size: 60px;
     margin-top: 15px;
+}
+
+#graph {
+    background-size: cover;
+    position: absolute;
+    text-align: center;
+    z-index: 1;
+}
+
+#lomake {
+ font-size: 100px;
+ z-index: 4;
 }

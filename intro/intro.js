@@ -17,7 +17,7 @@ document.getElementById("kuvanappi").addEventListener("click", startTimer);
 function startTimer () {
   let minutesLabel = document.getElementById("minutes");
   let secondsLabel = document.getElementById("seconds");
-  let totalSeconds = 5;
+  let totalSeconds = 720;
   let aika = setInterval(setTime, 1000);
 
   function setTime() {

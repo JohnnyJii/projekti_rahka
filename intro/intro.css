@@ -151,13 +151,8 @@ a {
     font-family: 'Alegreya Sans SC', sans-serif;
 }
 
-.btn-upload {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-}
+
 .btn-upload input[type=file] {
-    position: absolute;
     opacity: 0;
     z-index: 0;
     max-width: 100%;
@@ -168,6 +163,9 @@ a {
     height: 200px;
     width: 200px;
     background: red;
-    color: black;
-    border: 0;
+}
+.btn-upload:hover .btn{
+    padding: 8px 20px;
+    background: darkred;
+    color: white;
 }

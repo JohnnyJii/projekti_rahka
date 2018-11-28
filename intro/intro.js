@@ -15,9 +15,10 @@ sliderTrigger.addEventListener( "click" , function(el){
 document.getElementById("kuvanappi").addEventListener("click", startTimer);
 
 function startTimer () {
+  document.getElementById("kuvanappi").disabled = true;
   let minutesLabel = document.getElementById("minutes");
   let secondsLabel = document.getElementById("seconds");
-  let totalSeconds = 5;
+  let totalSeconds = 10;
   let aika = setInterval(setTime, 1000);
 
   function setTime() {
@@ -42,6 +43,6 @@ function startTimer () {
       return valString;
     }
   }
-
 }
+
 

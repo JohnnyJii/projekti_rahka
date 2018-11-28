@@ -1,12 +1,9 @@
 (function (factory) {
   if(typeof define === 'function' && define.amd) {
-    //AMD
     define(['leaflet'], factory);
   } else if(typeof module !== 'undefined') {
-    // Node/CommonJS
     module.exports = factory(require('leaflet'));
   } else {
-    // Browser globals
     if(typeof window.L === 'undefined')
       throw 'Leaflet must be loaded first';
     factory(window.L);
@@ -16,30 +13,17 @@
   L.Control.Gps = L.Control.extend({
 
     includes: L.version[0] =='1' ? L.Evented.prototype : L.Mixin.Events,
-    //
-    //Managed Events:
-    //	Event			Data passed			Description
-    //
-    //	gps:located		{marker,latlng}	 	fired after gps marker is located
-    //	gps:disabled	{marker}			fired after gps is disabled
-    //	gps:error	    {message}			fired after gps error
-    //
-    //Methods exposed:
-    //	Method 			Description
-    //
-    //  getLocation		return Latlng and marker of current position
-    //  activate		active tracking on runtime
-    //  deactivate		deactive tracking on runtime
-    //
+
+
     options: {
-      autoActive: false,		//activate control at startup
-      autoCenter: false,		//move map when gps location change
-      maxZoom: null,			//max zoom for autoCenter
-      textErr: '',			//error message on alert notification
-      callErr: null,			//function that run on gps error activating
+      autoActive: false,
+      autoCenter: false,
+      maxZoom: null,
+      textErr: '',
+      callErr: null,
       title: 'Center map on your location',
-      marker: null,			//L.Marker used for location, default use a L.CircleMarker
-      style: {				//default L.CircleMarker styles
+      marker: null,
+      style: {
         radius: 5,
         weight: 2,
         color: '#c20',
@@ -47,7 +31,7 @@
         fillColor: '#f23',
         fillOpacity: 1
       },
-      //accuracy: true,		//show accuracy Circle
+
       position: 'topleft',
       transform: function(latlng) { return latlng },
       //TODO add gpsLayer
@@ -61,7 +45,7 @@
       this._errorFunc = this.options.callErr || this.showAlert;
       this._isActive = false;
       this._isLoading = false;
-      this._currentLocation = null;	//store last location
+      this._currentLocation = null;
     },
 
     onAdd: function (map) {
@@ -220,4 +204,4 @@
 
   return L.Control.Gps;
 
-});1
+});

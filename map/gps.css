@@ -18,7 +18,7 @@
     float:left;
     width:26px;
     height:26px;
-    background-image: url('../images/gps-icon.png');
+    background-image: url("https://labs.easyblog.it/maps/leaflet-gps/images/gps-icon.png");
     background-repeat: no-repeat;
     background-position: 1px 1px;
     background-color: #fff;

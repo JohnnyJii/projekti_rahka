@@ -18,7 +18,7 @@ function startTimer () {
   document.getElementById("kuvanappi").disabled = true;
   let minutesLabel = document.getElementById("minutes");
   let secondsLabel = document.getElementById("seconds");
-  let totalSeconds = 10;
+  let totalSeconds = 720;
   let aika = setInterval(setTime, 1000);
 
   function setTime() {

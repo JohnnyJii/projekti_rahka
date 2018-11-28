@@ -24,7 +24,7 @@ a {
     width: 100%;
     position: absolute;
     text-align: center;
-    margin-top: 50%;
+    margin-top: 40%;
 }
 
 
@@ -144,4 +144,16 @@ a {
 #lopputeksti {
     font-size: 130px;
     font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+#file-upload-filename {
+    font-size: 30px;
+}
+
+#reset {
+    height: 200px;
+    width: 300px;
+    background-color: red;
+    font-size: 70px;
+    border-radius: 20px;
 }

@@ -13,6 +13,7 @@ sliderTrigger.addEventListener( "click" , function(el){
 });
 
 document.getElementById("kuvanappi").addEventListener("click", startTimer);
+document.getElementById("reset").addEventListener("click", refreshPage);
 
 function startTimer () {
   document.getElementById("kuvanappi").disabled = true;
@@ -43,6 +44,10 @@ function startTimer () {
       return valString;
     }
   }
+}
+
+function refreshPage() {
+  location.reload(false);
 }
 
 

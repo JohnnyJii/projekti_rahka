@@ -133,6 +133,7 @@ a {
 #kuvat {
     padding: 0;
     margin: 0;
+    font-family: 'Alegreya Sans SC', sans-serif;
 }
 
 #timer {
@@ -146,9 +147,11 @@ a {
 }
 
 .btn-upload .btn{
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 300px;
     background: red;
+    border-radius: 20px;
+    font-size: 50px;
 }
 
 .btn-upload input[type=file] {
@@ -165,12 +168,19 @@ a {
 }
 
 .btn-submit .btn{
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 300px;
     background-color: lightskyblue;
+    border-radius: 20px;
+    font-size: 50px;
 }
 
 .btn-submit:hover .btn {
     background: darkblue;
     color:white;
+}
+
+#start_btn-photos {
+    width: 100%;
+    text-align: center;
 }

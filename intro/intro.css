@@ -165,7 +165,6 @@ a {
     background: red;
 }
 .btn-upload:hover .btn{
-    padding: 8px 20px;
     background: darkred;
     color: white;
 }

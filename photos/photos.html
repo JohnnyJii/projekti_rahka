@@ -32,12 +32,16 @@
         </div>
         <form action="/upload" method="post" enctype="multipart/form-data" id="lomake">
             <h1 id="kuvat">Kuvat</h1>
-            <input id="lataus" type="file" name="kuva" accept="audio/*,video/*,image/*">
+
+            <label class="btn-upload">
+                <input type="file" name="upload" >
+                <button class="btn">Etsi tiedosto</button>
+            </label>
+
 
             <button id="butt" type="submit">Lähetä</button>
         </form>
     </div>
-
 </div>
 
 <script src="photos.js"></script>

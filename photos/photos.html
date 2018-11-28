@@ -30,14 +30,22 @@
                 <a href="/projekti_rahka/login/login.html">Logout</a>
             </div>
         </div>
+        <div id="start_btn-photos">
         <form action="/upload" method="post" enctype="multipart/form-data" id="lomake">
             <h1 id="kuvat">Kuvat</h1>
-            <input id="lataus" type="file" name="kuva" accept="audio/*,video/*,image/*">
 
-            <button id="butt" type="submit">Lähetä</button>
+            <label class="btn-upload">
+                <input type="file" name="upload" accept="image">
+                <button class="btn">Etsi tiedosto</button>
+            </label>
+
+            <label class="btn-submit">
+                <button class="btn" type="submit">Lähetä</button>
+            </label>
         </form>
+            
+        </div>
     </div>
-
 </div>
 
 <script src="photos.js"></script>

@@ -130,21 +130,10 @@ a {
  z-index: 4;
 }
 
-#butt {
-    height: 200px;
-    width: 200px;
-    background-color: lightblue;
-}
-
-#lataus {
-    height: 200px;
-    width: 200px;
-    background-color: lightblue;
-}
-
 #kuvat {
     padding: 0;
     margin: 0;
+    font-family: 'Alegreya Sans SC', sans-serif;
 }
 
 #timer {
@@ -156,4 +145,3 @@ a {
     font-size: 130px;
     font-family: 'Alegreya Sans SC', sans-serif;
 }
-

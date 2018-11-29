@@ -16,7 +16,10 @@ document.getElementById("kuvanappi").addEventListener("click", Countdown);
 document.getElementById("reset").addEventListener("click", refreshPage);
 
 function Countdown () {
+  document.getElementById("kuvanappi").disabled = true;
+  let nappi = document.getElementById("kuvanappi");
   let countdown = document.getElementById("countdown");
+  nappi.style = "box-shadow: 0 0 0 20px red; animation: pulse 1s;";
   countdown.style.visibility = "visible";
   let totalSeconds = 6;
   let aika = setInterval(setTime, 1000);
@@ -28,6 +31,7 @@ function Countdown () {
       clearInterval(aika);
       startTimer();
       countdown.style.visibility = "hidden";
+      nappi.style = "box-shadow: 0 0 0 20px blue;";
     }
   }
 }
@@ -36,12 +40,11 @@ function Countdown () {
 
 
 function startTimer () {
-
-  document.getElementById("kuvanappi").disabled = true;
   let minutesLabel = document.getElementById("minutes");
   let secondsLabel = document.getElementById("seconds");
-  let totalSeconds = 720;
+  let totalSeconds = 5;
   let aika = setInterval(setTime, 1000);
+
 
   function setTime() {
     totalSeconds--;
@@ -54,6 +57,8 @@ function startTimer () {
       newEl.setAttribute("id", "lopputekstidiv");
       newEl.innerHTML = '<label id="lopputeksti">Testi päättyi</label>';
       el.parentNode.replaceChild(newEl, el);
+      let nappi = document.getElementById("kuvanappi");
+      nappi.style = "box-shadow: none;"
     }
   }
 
@@ -71,5 +76,6 @@ function startTimer () {
 function refreshPage() {
   location.reload(true);
 }
+
 
 

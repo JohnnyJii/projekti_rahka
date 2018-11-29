@@ -44,14 +44,6 @@ a {
     border-radius: 30px;
 }
 
-#kuvanappi:active {
-    width: 82%;
-    position: relative;
-    height: 400px;
-    background: url("https://gentsac.com.au/wp-content/uploads/2015/05/man-running.png") no-repeat;
-    border: 10px solid black;
-    border-radius: 30px;
-}
 
 
 .slider-container {
@@ -165,13 +157,14 @@ a {
 }
 
 #reset {
-    height: 150px;
-    width: 400px;
+    height: 200px;
+    width: 82%;
     background-color: red;
     font-size: 80px;
     border-radius: 30px;
     border: 8px solid black;
     font-family: 'Oswald', sans-serif;
+    position: relative;
 }
 
 #ohjeet {
@@ -186,7 +179,7 @@ a {
     visibility: hidden;
     left: 50%;
     transform: translate(-50%, 0);
-    font-size: 90px;
+    font-size: 110px;
     font-family: 'Oswald', sans-serif;
     top: 45%;
     padding: 0;
@@ -197,4 +190,8 @@ a {
 p {
     padding: 0;
     margin: 0;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 var(--hover); }
 }

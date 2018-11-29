@@ -19,7 +19,7 @@ function startTimer () {
   document.getElementById("kuvanappi").disabled = true;
   let minutesLabel = document.getElementById("minutes");
   let secondsLabel = document.getElementById("seconds");
-  let totalSeconds = 720;
+  let totalSeconds = 5;
   let aika = setInterval(setTime, 1000);
 
   function setTime() {
@@ -30,7 +30,8 @@ function startTimer () {
       clearInterval(aika);
       let el = document.querySelector('#timer');
       let newEl = document.createElement('p');
-      newEl.innerHTML = '<label id="lopputeksti">testi päättyi</label>';
+      newEl.setAttribute("id", "lopputekstidiv");
+      newEl.innerHTML = '<label id="lopputeksti">Testi päättyi</label>';
       el.parentNode.replaceChild(newEl, el);
     }
   }
@@ -47,7 +48,7 @@ function startTimer () {
 }
 
 function refreshPage() {
-  location.reload(false);
+  location.reload(true);
 }
 
 

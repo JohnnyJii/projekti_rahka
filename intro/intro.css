@@ -28,6 +28,12 @@ a {
     margin-top: 27%;
 }
 
+#start_btn-photos {
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
 
 #kuvanappi {
     width: 82%;
@@ -134,7 +140,8 @@ a {
 #kuvat {
     padding: 0;
     margin: 0;
-    font-family: 'Alegreya Sans SC', sans-serif;
+    font-family: 'Oswald', sans-serif;
+    font-size: 140px;
 }
 
 #timer {
@@ -150,8 +157,7 @@ a {
 }
 
 #lopputekstidiv {
-    margin: 0;
-    padding: 0;
+    padding: 20px;
 }
 
 #file-upload-filename {
@@ -159,12 +165,13 @@ a {
 }
 
 #reset {
-    height: 200px;
+    height: 150px;
     width: 400px;
     background-color: red;
-    font-size: 70px;
+    font-size: 80px;
     border-radius: 30px;
     border: 8px solid black;
+    font-family: 'Oswald', sans-serif;
 }
 
 #ohjeet {
@@ -172,6 +179,19 @@ a {
     font-family: 'Oswald', sans-serif;
     padding-bottom: 25px;
     margin: 0;
+}
+
+#countdown {
+    position: relative;
+    visibility: hidden;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 90px;
+    font-family: 'Oswald', sans-serif;
+    top: 45%;
+    padding: 0;
+    margin: 0;
+    color: red;
 }
 
 p {

@@ -12,14 +12,35 @@ sliderTrigger.addEventListener( "click" , function(el){
 
 });
 
-document.getElementById("kuvanappi").addEventListener("click", startTimer);
+document.getElementById("kuvanappi").addEventListener("click", Countdown);
 document.getElementById("reset").addEventListener("click", refreshPage);
 
+function Countdown () {
+  let countdown = document.getElementById("countdown");
+  countdown.style.visibility = "visible";
+  let totalSeconds = 6;
+  let aika = setInterval(setTime, 1000);
+
+  function setTime () {
+    totalSeconds--;
+    countdown.innerHTML = 'Aika alkaa: ' + totalSeconds;
+    if (totalSeconds < 0) {
+      clearInterval(aika);
+      startTimer();
+      countdown.style.visibility = "hidden";
+    }
+  }
+}
+
+
+
+
 function startTimer () {
+
   document.getElementById("kuvanappi").disabled = true;
   let minutesLabel = document.getElementById("minutes");
   let secondsLabel = document.getElementById("seconds");
-  let totalSeconds = 5;
+  let totalSeconds = 720;
   let aika = setInterval(setTime, 1000);
 
   function setTime() {

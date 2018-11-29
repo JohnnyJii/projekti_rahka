@@ -31,7 +31,7 @@ function Countdown () {
       clearInterval(aika);
       startTimer();
       countdown.style.visibility = "hidden";
-      nappi.style = "box-shadow: 0 0 0 20px blue;";
+      nappi.style = "box-shadow: 0 0 0 20px #12E603;";
     }
   }
 }

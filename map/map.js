@@ -21,7 +21,7 @@ function onLocationFound(e) {
   var radius = e.accuracy / 75;
 
   current_position = L.marker(e.latlng).addTo(map)
-  .bindPopup("You are here " + radius).openPopup();
+  .bindPopup("You are here " + radius);
 
   current_accuracy = L.circle(e.latlng, radius).addTo(map);
 }
@@ -35,8 +35,9 @@ map.on('locationerror', onLocationError);
 
 // wrap map.locate in a function
 function locate() {
-  map.locate({setView: true, maxZoom: 15});
+  map.locate({setView: true, maxZoom: 20});
 }
 
 // interval
 setInterval(locate, 2000);
+

@@ -59,6 +59,8 @@ function startTimer () {
       el.parentNode.replaceChild(newEl, el);
       let nappi = document.getElementById("kuvanappi");
       nappi.style = "box-shadow: none;"
+      let lomake = document.getElementById("lomake");
+      lomake.style = "visibility: visible";
     }
   }
 

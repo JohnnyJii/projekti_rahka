@@ -93,7 +93,7 @@ function showFileName( event ) {
   let fileName = input.files[0].name;
 
   // use fileName however fits your app best, i.e. add it into a div
-  infoArea.textContent = 'File name: ' + fileName;
+  infoArea.textContent = 'Tiedosto valittu: ' + fileName;
 }
 
 

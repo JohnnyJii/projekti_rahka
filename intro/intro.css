@@ -153,6 +153,7 @@ a {
 #file-upload-filename {
     font-size: 50px;
     margin-bottom: 15px;
+    color: red;
 }
 
 #reset {
@@ -195,9 +196,9 @@ p {
     0% { box-shadow: 0 0 0 0 var(--hover); }
 }
 
-/*#lomake {
+#lomake {
     visibility: hidden;
-}*/
+}
 
 .btn-upload {
     position: relative;

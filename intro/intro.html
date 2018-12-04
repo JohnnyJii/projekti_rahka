@@ -32,13 +32,12 @@
             </div>
             <form action="/upload" method="post" enctype="multipart/form-data" id="lomake">
                 <label class="btn-upload">
-                    <input type="file" name="upload" >
+                    <input id="file-upload" type="file" name="upload" >
                     <button class="btn">Etsi Kuva</button>
                     <button id="butt" type="submit">Lähetä</button>
                 </label>
-
-                <p id="file-upload-filename"></p>
             </form>
+            <p id="file-upload-filename"></p>
             <button id="reset">RESET</button>
         </div>
 

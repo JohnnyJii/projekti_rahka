@@ -27,7 +27,7 @@ a {
     width: 100%;
     position: absolute;
     text-align: center;
-    margin-top: 20%;
+    margin-top: 15%;
 }
 
 #start_btn-photos {
@@ -151,7 +151,8 @@ a {
 }
 
 #file-upload-filename {
-    font-size: 30px;
+    font-size: 50px;
+    margin-bottom: 15px;
 }
 
 #reset {
@@ -215,7 +216,7 @@ p {
 .btn-upload .btn{
     height: 150px;
     width: 385px;
-    background: red;
+    background: lightblue;
     color: black;
     border-radius: 30px;
     border: 8px solid black;
@@ -231,12 +232,16 @@ p {
 #butt {
     height: 150px;
     width: 385px;
-    background: red;
     color: black;
     border-radius: 30px;
     border: 8px solid black;
     font-size: 70px;
     font-family: 'Oswald', sans-serif;
+    background-color: #1EB300;
+}
+
+#file-upload {
+    width: 385px;
 }
 
 

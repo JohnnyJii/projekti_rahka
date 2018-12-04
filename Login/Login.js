@@ -1,4 +1,4 @@
-$('.form').find('input').on('keyup blur focus', function (e) {
+$('.form').find('input').on('keyup blur focus', function(e) {
 
   var $this = $(this),
       label = $this.prev('label');
@@ -10,24 +10,24 @@ $('.form').find('input').on('keyup blur focus', function (e) {
       label.addClass('active highlight');
     }
   } else if (e.type === 'blur') {
-    if( $this.val() === '' ) {
+    if ($this.val() === '') {
       label.removeClass('active highlight');
     } else {
       label.removeClass('highlight');
     }
   } else if (e.type === 'focus') {
 
-    if( $this.val() === '' ) {
+    if ($this.val() === '') {
       label.removeClass('highlight');
     }
-    else if( $this.val() !== '' ) {
+    else if ($this.val() !== '') {
       label.addClass('highlight');
     }
   }
 
 });
 
-$('.tab a').on('click', function (e) {
+$('.tab a').on('click', function(e) {
 
   e.preventDefault();
 
@@ -42,16 +42,14 @@ $('.tab a').on('click', function (e) {
 
 });
 
-function validateForm(formId)
-{
+function validateForm(formId) {
   var inputs, index;
-  var form=document.getElementById(formId);
+  var form = document.getElementById(formId);
   inputs = form.getElementsByTagName('input');
   for (index = 0; index < inputs.length; ++index) {
     // deal with inputs[index] element.
-    if (inputs[index].value==null || inputs[index].value=="")
-    {
-      alert("Field is empty");
+    if (inputs[index].value == null || inputs[index].value == '') {
+      alert('Field is empty');
       return false;
     }
   }

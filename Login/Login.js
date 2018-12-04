@@ -1,6 +1,6 @@
 $('.form').find('input').on('keyup blur focus', function(e) {
 
-  var $this = $(this),
+  const $this = $(this),
       label = $this.prev('label');
 
   if (e.type === 'keyup') {
@@ -43,8 +43,8 @@ $('.tab a').on('click', function(e) {
 });
 
 function validateForm(formId) {
-  var inputs, index;
-  var form = document.getElementById(formId);
+  let inputs, index;
+  let form = document.getElementById(formId);
   inputs = form.getElementsByTagName('input');
   for (index = 0; index < inputs.length; ++index) {
     // deal with inputs[index] element.

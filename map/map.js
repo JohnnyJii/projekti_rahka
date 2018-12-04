@@ -1,7 +1,7 @@
 var map = L.map('map');
 
 L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
-  maxZoom: 18,
+  maxZoom: 15,
   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
   '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
   'Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -21,7 +21,7 @@ function onLocationFound(e) {
   var radius = e.accuracy / 75;
 
   current_position = L.marker(e.latlng).addTo(map)
-  .bindPopup("You are here " + radius);
+  .bindPopup("You are here ");
 
   current_accuracy = L.circle(e.latlng, radius).addTo(map);
 }
@@ -41,3 +41,22 @@ function locate() {
 // interval
 setInterval(locate, 2000);
 
+
+//Waypoints
+
+
+//Polyline
+var start = new L.LatLng(onLocationFound(e));
+var midway = new L.LatLng(onLocationFound(e));
+var finish = new L.LatLng(onLocationFound(e));
+var pointList = [start, midway, finish];
+
+var firstpolyline = new L.Polyline(pointList, {
+  color: 'red',
+  weight: 3,
+  opacity: 0.5,
+  smoothFactor: 1
+});
+firstpolyline.addTo(map);
+
+//Route km

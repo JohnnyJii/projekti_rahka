@@ -1,90 +1,107 @@
 'use strict';
-let sliderTrigger = document.getElementsByClassName("slider-trigger")[0];
+let sliderTrigger = document.getElementsByClassName('slider-trigger')[0];
 let slider = document.getElementsByClassName('slider-parent')[0];
 
-sliderTrigger.addEventListener( "click" , function(el){
+sliderTrigger.addEventListener('click', function(el) {
 
-  if(slider.classList.contains("active")){
-    slider.classList.remove("active");
-  }else{
-    slider.classList.add("active");
+  if (slider.classList.contains('active')) {
+    slider.classList.remove('active');
+  } else {
+    slider.classList.add('active');
   }
 
 });
 
-document.getElementById("kuvanappi").addEventListener("click", Countdown);
-document.getElementById("reset").addEventListener("click", refreshPage);
+document.getElementById('kuvanappi').addEventListener('click', Countdown);
+document.getElementById('reset').addEventListener('click', refreshPage);
 
-function Countdown () {
-  document.getElementById("kuvanappi").disabled = true;
-  let nappi = document.getElementById("kuvanappi");
-  let countdown = document.getElementById("countdown");
-  nappi.style = "box-shadow: 0 0 0 20px red; animation: pulse 1s;";
-  countdown.style.visibility = "visible";
-  let totalSeconds = 6;
-  let aika = setInterval(setTime, 1000);
+let aika = null;
+let toinenAika = null;
+let totalSeconds = 6;
+let nappi = document.getElementById('kuvanappi');
+let countdown = document.getElementById('countdown');
 
-  function setTime () {
-    totalSeconds--;
-    countdown.innerHTML = 'Aika alkaa: ' + totalSeconds;
-    if (totalSeconds < 0) {
-      clearInterval(aika);
-      startTimer();
-      countdown.style.visibility = "hidden";
-      nappi.style = "box-shadow: 0 0 0 20px #1CC518;";
-    }
+function Countdown() {
+  document.getElementById('kuvanappi').disabled = true;
+  nappi.style = 'box-shadow: 0 0 0 20px red; animation: pulse 1s;';
+  countdown.style.visibility = 'visible';
+  aika = setInterval(laskenta, 1000);
+
+}
+
+function laskenta() {
+  totalSeconds--;
+  countdown.innerHTML = 'Aika alkaa: ' + totalSeconds;
+  if (totalSeconds < 0) {
+    clearInterval(aika);
+    startTimer();
+    countdown.style.visibility = 'hidden';
+    nappi.style = 'box-shadow: 0 0 0 20px #1CC518;';
   }
 }
 
+let minutesLabel = document.getElementById('minutes');
+let secondsLabel = document.getElementById('seconds');
+let harjoitusAika = 720;
 
+function startTimer() {
+  aika = setInterval(setTime, 1000);
+  toinenAika = setInterval('lisaaPiste', 2000);
+}
 
-
-function startTimer () {
-  let minutesLabel = document.getElementById("minutes");
-  let secondsLabel = document.getElementById("seconds");
-  let totalSeconds = 5;
-  let aika = setInterval(setTime, 1000);
-
-
-  function setTime() {
-    totalSeconds--;
-    secondsLabel.innerHTML = pad(totalSeconds % 60);
-    minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-    if (totalSeconds < 0) {
-      clearInterval(aika);
-      let el = document.querySelector('#timer');
-      let newEl = document.createElement('p');
-      newEl.setAttribute("id", "lopputekstidiv");
-      newEl.innerHTML = '<label id="lopputeksti">Testi päättyi</label>';
-      el.parentNode.replaceChild(newEl, el);
-      let nappi = document.getElementById("kuvanappi");
-      nappi.style = "box-shadow: none;"
-      let lomake = document.getElementById("lomake");
-      lomake.style = "visibility: visible";
-    }
+function setTime() {
+  harjoitusAika--;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+  if (harjoitusAika < 0) {
+    clearInterval(aika);
+    let el = document.querySelector('#timer');
+    let newEl = document.createElement('p');
+    newEl.setAttribute('id', 'lopputekstidiv');
+    newEl.innerHTML = '<label id="lopputeksti">Testi päättyi</label>';
+    el.parentNode.replaceChild(newEl, el);
+    let nappi = document.getElementById('kuvanappi');
+    nappi.style = 'box-shadow: none;';
+    let lomake = document.getElementById('lomake');
+    lomake.style = 'visibility: visible';
   }
 
-
   function pad(val) {
-    let valString = val + "";
+    let valString = val + '';
     if (valString.length < 2) {
-      return "0" + valString;
+      return '0' + valString;
     } else {
       return valString;
     }
   }
 }
 
+function lisaaPiste() {
+  // const koordinaatit = haePaikka();  // {lat: 60.423, lon: 23.4324234}
+  const settings = {
+    method: 'POST',
+    body: JSON.stringify(current_position),
+
+  }
+  fetch('/piste').then(resp => {
+    return resp.json()
+  }).then(json => {
+    console.log(json);
+  })
+
+}
+
+
 function refreshPage() {
   location.reload(true);
 }
 
-let input = document.getElementById( 'file-upload' );
-let infoArea = document.getElementById( 'file-upload-filename' );
+let input = document.getElementById('file-upload');
+let infoArea = document.getElementById('file-upload-filename');
 
-input.addEventListener( 'change', showFileName );
+input.addEventListener('change', showFileName);
 
-function showFileName( event ) {
+function showFileName(event) {
 
   // the change event gives us the input it occurred in
   let input = event.srcElement;
@@ -95,12 +112,6 @@ function showFileName( event ) {
   // use fileName however fits your app best, i.e. add it into a div
   infoArea.textContent = 'Tiedosto valittu: ' + fileName;
 }
-
-
-
-
-
-
 
 const lomake = document.querySelector('#lomake');
 const lista = document.querySelector('#result');

@@ -45,7 +45,7 @@ setInterval(locate, 2000);
 //Polyline
 var start = new L.LatLng(onLocationFound(e));
 var midway = [];
-for (int i = 0, i < 720, i++)
+for (int i = 0, i < 720; i=+2)
 midway.add(onLocationFound()
 );
 var finish = new L.LatLng(onLocationFound(e));

@@ -103,7 +103,7 @@ function showFileName( event ) {
 
 
 const lomake = document.querySelector('#lomake');
-const lista = document.querySelector('#result');
+const result = document.querySelector('#result');
 
 const lahetaLomake = (evt) => {
   evt.preventDefault();
@@ -118,7 +118,7 @@ const lahetaLomake = (evt) => {
   }).then((json) => {
     const polku = 'files/';
     const thumbs = 'thumbs/';
-    lista.innerHTML = '';
+    result.innerHTML = '';
     json.forEach(item => {
       const li = document.createElement('li');
       if (item.mimetype.includes('image')) {
@@ -136,7 +136,7 @@ const lahetaLomake = (evt) => {
         vid.setAttribute('controls', 'controls');
         li.appendChild(vid);
       }
-      lista.appendChild(li);
+      result.appendChild(li);
     });
 
   });

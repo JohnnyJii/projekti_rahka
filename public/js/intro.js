@@ -77,7 +77,7 @@ function setTime() {
 }
 
 function lisaaPiste() {
-  // const koordinaatit = haePaikka();  // {lat: 60.423, lon: 23.4324234}
+  // const koordinaatit = onLocationFound();  // {lat: 60.423, lon: 23.4324234}
   const settings = {
     method: 'POST',
     body: JSON.stringify(current_position),

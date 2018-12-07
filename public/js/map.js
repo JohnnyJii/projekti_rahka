@@ -1,7 +1,7 @@
 var map = L.map('map');
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-  maxZoom: 25,
+  maxZoom: 15,
   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
   '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
   'Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -27,8 +27,27 @@ function onLocationFound(e) {
   current_accuracy = L.circle(e.latlng, radius).addTo(map);
 
   console.log('cur pos', e.latlng);
+ /*
+  const url = 'https://10.114.32.162/node/lisaareitti';
 
-  rawPoints.push({ "latitude": e.latlng.lat, "longitude": e.latlng.lng });
+  const reittipiste = JSON.stringify(
+      {'latitude': e.latlng.lat, 'longitude': e.latlng.lng});
+
+  const settings = {
+    method: 'POST',
+    body: reittipiste,
+    headers: {
+      'Content-type': 'application/json',
+    },
+  };
+
+  fetch(url, settings).then(function(vastaus) {
+    return vastaus.json();
+  }).then(function(json) {
+    console.log('json', json);
+  });
+*/
+  rawPoints.push({'latitude': e.latlng.lat, 'longitude': e.latlng.lng});
 
   const coordinates = rawPoints.map(
       rawPoint => new L.LatLng(rawPoint['latitude'], rawPoint['longitude']));
@@ -45,7 +64,7 @@ function onLocationFound(e) {
 
   polyline.addTo(map);
 
-  map.fitBounds(polyline.getBounds());
+  // map.fitBounds(polyline.getBounds());
 
 }
 
@@ -58,11 +77,11 @@ map.on('locationerror', onLocationError);
 
 // wrap map.locate in a function
 function locate() {
-  map.locate({setView: true, maxZoom: 25});
+  map.locate({setView: true, maxZoom: 15});
 }
 
 // interval
-setInterval(locate, 2000);
+//setInterval(locate, 2000);
 
 //Live update
 

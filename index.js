@@ -19,14 +19,14 @@ const upload = multer({dest: 'public/files/'});
 const app = express();
 
 
-/*
+
 const sslkey  = fs.readFileSync('/etc/pki/tls/private/ca.key');
 const sslcert = fs.readFileSync('/etc/pki/tls/certs/ca.crt');
 const options = {
   key: sslkey,
   cert: sslcert
 };
-*/
+
 
 app.use(express.static('public'));
 
@@ -164,12 +164,12 @@ app.post('/lisaareitti', (req, res) => {
   res.send(rp);
 });
 
-/*
+
 app.get('/test', (req,res) => {
   if (req.secure) res.send('https :)');
   else res.send('hello not secure?');
 });
-*/
+
 
 app.listen(8000); //normal http traffic
-// https.createServer(options, app).listen(3000); //https traffic
+https.createServer(options, app).listen(3000); //https traffic

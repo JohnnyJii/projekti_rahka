@@ -1,7 +1,7 @@
 var map = L.map('map');
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-  maxZoom: 20,
+  maxZoom: 25,
   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
   '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
   'Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -10,6 +10,8 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 
 // placeholders for the L.marker and L.circle representing user's current position and accuracy
 let current_position, current_accuracy;
+//Polyline
+const rawPoints = [];
 
 function onLocationFound(e) {
   // if position defined, then remove the existing position marker and accuracy circle from the map
@@ -24,6 +26,27 @@ function onLocationFound(e) {
 
   current_accuracy = L.circle(e.latlng, radius).addTo(map);
 
+  console.log('cur pos', e.latlng);
+
+  rawPoints.push({ "latitude": e.latlng.lat, "longitude": e.latlng.lng });
+
+  const coordinates = rawPoints.map(
+      rawPoint => new L.LatLng(rawPoint['latitude'], rawPoint['longitude']));
+
+  let polyline = L.polyline(
+      coordinates,
+      {
+        color: 'blue',
+        weight: 3,
+        opacity: .7,
+        lineJoin: 'round',
+      },
+  );
+
+  polyline.addTo(map);
+
+  map.fitBounds(polyline.getBounds());
+
 }
 
 function onLocationError(e) {
@@ -35,35 +58,12 @@ map.on('locationerror', onLocationError);
 
 // wrap map.locate in a function
 function locate() {
-  map.locate({setView: true, maxZoom: 20});
+  map.locate({setView: true, maxZoom: 25});
 }
 
 // interval
 setInterval(locate, 2000);
 
-//Waypoints
-
-//Polyline
-var rawPoints = [
-
-];
-
-rawPoints.push()
-
-var coordinates = rawPoints.map(rawPoint => new L.LatLng(rawPoint["latitude"], rawPoint["longitude"]))
-
-let polyline = L.polyline(
-    coordinates,
-    {
-      color: 'blue',
-      weight: 3,
-      opacity: .7,
-      lineJoin: 'round'
-    }
-);
-
-polyline.addTo(map);
-
-map.fitBounds(polyline.getBounds());
+//Live update
 
 //Route km

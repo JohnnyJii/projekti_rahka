@@ -50,9 +50,10 @@ function startTimer() {
 }
 
 function setTime() {
+  console.log('ha', harjoitusAika);
   harjoitusAika--;
-  secondsLabel.innerHTML = pad(totalSeconds % 60);
-  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+  secondsLabel.innerHTML = pad(harjoitusAika % 60);
+  minutesLabel.innerHTML = pad(parseInt(harjoitusAika / 60));
   if (harjoitusAika < 0) {
     clearInterval(aika);
     let el = document.querySelector('#timer');
@@ -77,20 +78,19 @@ function setTime() {
 }
 
 function lisaaPiste() {
-  // const koordinaatit = onLocationFound();  // {lat: 60.423, lon: 23.4324234}
+  const koordinaatit = onLocationFound();  // {lat: 60.423, lon: 23.4324234}
   const settings = {
     method: 'POST',
     body: JSON.stringify(current_position),
 
-  }
+  };
   fetch('/piste').then(resp => {
-    return resp.json()
+    return resp.json();
   }).then(json => {
     console.log(json);
-  })
+  });
 
 }
-
 
 function refreshPage() {
   location.reload(true);

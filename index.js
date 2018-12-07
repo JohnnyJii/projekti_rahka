@@ -26,12 +26,13 @@ app.use(express.static('public'));
 // create the connection to database
 const connection = database.connect();
 
+// testataan toimiiko tietokanta
 database.select(connection, (results) => {
   console.log(results);
 });
 
 const insertToDB = (data, res, next) => {
-  database.insert(data, connection, (response) => {
+  database.insert(data, connection, () => {
     next();
   });
 };
@@ -43,7 +44,6 @@ const selectAll = (req, next) => {
   });
 };
 
-
 // tallenna tiedosto
 app.post('/upload', upload.single('kuva'), (req, res, next) => {
   console.log(req.file);
@@ -53,14 +53,18 @@ app.post('/upload', upload.single('kuva'), (req, res, next) => {
 
 // tee thumbnail
 app.use('/upload', (req, res, next) => {
-  resize.resizeImage(req.file.path, 500, './public/thumbs/'+req.file.filename+'_thumb');
+  resize.resizeImage(req.file.path, 150, './public/thumbs/' +
+      req.file.filename + '_thumb');
   next();
 });
 
 // tallenna tiedot tietokantaan
 app.use('/upload', (req, res, next) => {
   const data = [
-    req.body.fname, req.body.lname, req.file.filename + '_thumb'
+    req.body.fname,
+    req.body.lname,
+    req.file.filename,
+    req.file.filename + '_thumb'
   ];
   insertToDB(data, res, next);
 });

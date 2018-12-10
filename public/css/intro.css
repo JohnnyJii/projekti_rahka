@@ -22,9 +22,32 @@ a {
     font-family: 'Oswald', sans-serif;
     color: #2a2529
 }
+.material-icons {
+    position: absolute;
+    right: 20px;
+    background: white;
+    border: none;
+}
 
-#map {
-    visibility: hidden;
+.material-icons:hover {
+    -webkit-transform:rotate(-360deg);
+    transform: rotate(-360deg);
+    transition-duration: 1s;
+}
+
+.map {
+    overflow: hidden;
+    transition: max-height 1s ease-out;
+    transition: max-width 1s ease-out;
+    height: auto;
+    width: auto;
+    max-height: 640px;
+    max-width: 360px;
+    position: absolute;
+}
+.map.collapsed {
+    max-width: 0;
+    max-height: 0;
 }
 
 #start_btn {

@@ -1,7 +1,7 @@
 var map = L.map('map');
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-  maxZoom: 25,
+  maxZoom: 15,
   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
   '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
   'Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -62,12 +62,14 @@ function onLocationFound(e) {
       },
   );
 
+  L.Routing.control({
+    waypoints: [coordinates],
+  }).addTo(map);
+
   polyline.addTo(map);
 }
 
-  // map.fitBounds(polyline.getBounds());
-
-
+// map.fitBounds(polyline.getBounds());
 
 function onLocationError(e) {
   alert(e.message);
@@ -78,7 +80,7 @@ map.on('locationerror', onLocationError);
 
 // wrap map.locate in a function
 function locate() {
-  map.locate({setView: true, maxZoom: 25});
+  map.locate({setView: true, maxZoom: 15});
 }
 
 // interval

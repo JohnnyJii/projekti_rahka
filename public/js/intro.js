@@ -12,6 +12,10 @@ sliderTrigger.addEventListener('click', function(el) {
 
 });
 
+document.querySelector('#material-icons').addEventListener('click', function(){
+ document.querySelector('.map.collapsible').classList.toggle('collapsed');
+});
+
 document.getElementById('kuvanappi').addEventListener('click', Countdown);
 document.getElementById('reset').addEventListener('click', refreshPage);
 

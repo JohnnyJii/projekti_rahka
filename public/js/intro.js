@@ -12,9 +12,30 @@ sliderTrigger.addEventListener('click', function(el) {
 
 });
 
-document.querySelector('#material-icons').addEventListener('click', function(){
- document.querySelector('.map.collapsible').classList.toggle('collapsed');
+(function() {
+  const headings = document.querySelectorAll('map');
+
+  Array.prototype.forEach.call(headings, h => {
+    let btn = h.querySelector('button');
+    let target = h.nextElementSibling;
+
+    btn.onclick = () => {
+      let expanded = btn.getAttribute('aria-expanded') === 'true';
+
+      btn.setAttribute('aria-expanded', !expanded);
+      target.map = expanded;
+    }
+  });
+})()
+
+
+/*
+document.querySelector('material-icons').addEventListener('click', function(){
+document.querySelector('map.collapsible').classList.toggle('collapsed');
 });
+*/
+
+
 
 document.getElementById('kuvanappi').addEventListener('click', Countdown);
 document.getElementById('reset').addEventListener('click', refreshPage);

@@ -22,15 +22,34 @@ a {
     font-family: 'Oswald', sans-serif;
     color: #2a2529
 }
-.material-icons {
+
+#btn:focus svg {
+    outline: 2px solid;
+}
+
+#btn svg {
+    height: 5em;
+    margin-left: 0.5em;
+}
+
+[aria-expanded="true"] .vert {
+    display: none;
+}
+
+[aria-expanded] rect {
+    fill: currentColor;
+}
+
+#btn {
     position: absolute;
     right: 20px;
     background: white;
     border: none;
+    size: 30px;
 }
 
-.material-icons:hover {
-    -webkit-transform:rotate(-360deg);
+#btn:hover {
+    -webkit-transform: rotate(-360deg);
     transform: rotate(-360deg);
     transition-duration: 1s;
 }
@@ -38,43 +57,17 @@ a {
 .map {
     overflow: hidden;
     transition: max-height 1s ease-out;
-    transition: max-width 1s ease-out;
+    transition: max-width 2s ease-out;
     height: auto;
-    width: auto;
+    width: 360px;
     max-height: 640px;
-    max-width: 360px;
     position: absolute;
 }
+
 .map.collapsed {
     max-width: 0;
     max-height: 0;
 }
-
-#start_btn {
-    width: 100%;
-    position: absolute;
-    text-align: center;
-    margin-top: 15%;
-}
-
-#start_btn-photos {
-    width: 100%;
-    position: relative;
-    text-align: center;
-}
-
-
-#kuvanappi {
-    width: 82%;
-    position: relative;
-    height: 400px;
-    background: url("https://gentsac.com.au/wp-content/uploads/2015/05/man-running.png") no-repeat center center;
-    background-size: cover;
-    border: 10px solid black;
-    border-radius: 30px;
-}
-
-
 
 .slider-container {
     position: relative;
@@ -110,10 +103,32 @@ a {
     left: 4%;
 }
 
+#start_btn {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    margin-top: 15%;
+}
+
+#start_btn-photos {
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+#kuvanappi {
+    width: 82%;
+    position: relative;
+    height: 400px;
+    background: url("https://gentsac.com.au/wp-content/uploads/2015/05/man-running.png") no-repeat center center;
+    background-size: cover;
+    border: 10px solid black;
+    border-radius: 30px;
+}
+
 #burger {
     width: 100px;
 }
-
 
 #logo {
     font-family: 'Alegreya Sans SC', sans-serif;
@@ -126,13 +141,11 @@ a {
     margin-bottom: 0;
 }
 
-
 #menuLinks {
     text-align: center;
     height: 100%;
     line-height: 2100%;
 }
-
 
 .content {
     max-width: 100%;
@@ -150,8 +163,8 @@ a {
 }
 
 #lomake {
- font-size: 100px;
- z-index: 4;
+    font-size: 100px;
+    z-index: 4;
 }
 
 #kuvat {
@@ -220,7 +233,9 @@ p {
 }
 
 @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 var(--hover); }
+    0% {
+        box-shadow: 0 0 0 0 var(--hover);
+    }
 }
 
 #lomake {
@@ -232,6 +247,7 @@ p {
     overflow: hidden;
     display: inline-block;
 }
+
 .btn-upload input[type=file] {
     position: absolute;
     opacity: 0;
@@ -241,7 +257,7 @@ p {
     display: block;
 }
 
-.btn-upload .btn{
+.btn-upload .btn {
     height: 150px;
     width: 385px;
     background: lightblue;
@@ -254,7 +270,7 @@ p {
 
 .btn-submit:hover .btn {
     background: darkblue;
-    color:white;
+    color: white;
 }
 
 #butt {

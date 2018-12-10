@@ -1,7 +1,7 @@
 body {
     padding: 0;
     margin: 0;
-    background: url("http://www.123mobilewallpapers.com/wp-content/uploads/2015/07/beautiful_mountain_road_wallpaper.jpg") no-repeat center center fixed;
+    background: url("https://www.123mobilewallpapers.com/wp-content/uploads/2015/07/beautiful_mountain_road_wallpaper.jpg") no-repeat center center fixed;
     background-size: cover;
 
 }
@@ -46,6 +46,7 @@ a {
     background: white;
     border: none;
     size: 30px;
+    z-index: 999;
 }
 
 #btn:hover {
@@ -56,17 +57,16 @@ a {
 
 .map {
     overflow: hidden;
-    transition: max-height 1s ease-out;
-    transition: max-width 2s ease-out;
+    transition: height 1s ease-out;
+    transition: width 2s ease-out;
     height: auto;
-    width: 360px;
-    max-height: 640px;
+    width: 1048px;
+    height: 1120px;
     position: absolute;
 }
 
 .map.collapsed {
-    max-width: 0;
-    max-height: 0;
+    height: 0;
 }
 
 .slider-container {

@@ -1,4 +1,5 @@
-var map = L.map('map');
+console.log(L);
+const map = L.map('map');
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   maxZoom: 15,

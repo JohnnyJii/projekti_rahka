@@ -13,29 +13,22 @@ sliderTrigger.addEventListener('click', function(el) {
 });
 
 (function() {
-  const headings = document.querySelectorAll('map');
+  console.log('mitäs täällä');
+  const map = document.querySelector('#map');
 
-  Array.prototype.forEach.call(headings, h => {
-    let btn = h.querySelector('button');
-    let target = h.nextElementSibling;
+  let btn = document.querySelector('#btn');
 
-    btn.onclick = () => {
-      let expanded = btn.getAttribute('aria-expanded') === 'true';
-
-      btn.setAttribute('aria-expanded', !expanded);
-      target.map = expanded;
-    }
-  });
-})()
-
+  btn.onclick = () => {
+    console.log('klikattiinko mua?');
+    map.classList.toggle('collapsed');
+  };
+})();
 
 /*
 document.querySelector('material-icons').addEventListener('click', function(){
 document.querySelector('map.collapsible').classList.toggle('collapsed');
 });
 */
-
-
 
 document.getElementById('kuvanappi').addEventListener('click', Countdown);
 document.getElementById('reset').addEventListener('click', refreshPage);

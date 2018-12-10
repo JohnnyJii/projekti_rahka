@@ -2,54 +2,111 @@
 require('dotenv').config();
 
 const express = require('express');
+const db = require('./modules/database');
+//const resize = require('./modules/resize');
+//const exif = require('./modules/exif');
+const fs = require('fs');
 const https = require('https');
 const http = require('http');
-const database = require('./modules/database');
-const resize = require('./modules/resize');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const fs = require('fs');
+//const session = require('express-session');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 const multer = require('multer');
-const upload = multer({dest: 'public/files/'});
+const upload = multer({dest: 'public/uploads/'});
 
 const app = express();
 
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: true}));
 
-const sslkey  = fs.readFileSync('/etc/pki/tls/private/ca.key');
-const sslcert = fs.readFileSync('/etc/pki/tls/certs/ca.crt');
-const options = {
-  key: sslkey,
-  cert: sslcert
-};
+// parse application/json
+app.use(bodyParser.json());
 
+// enable cookies to send userID to client
+app.use(cookieParser());
 
-app.use(express.static('public'));
+// database connection
+const connection = db.connect();
 
-// create the connection to database
-const connection = database.connect();
-
-// testataan toimiiko tietokanta
-database.select(connection, (results) => {
-  console.log(results);
+// login with passport
+passport.serializeUser((user, done) => {
+  console.log('serialize:', user);
+  done(null, user);
 });
 
-const insertToDB = (data, res, next) => {
-  database.insert(data, connection, () => {
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
+// function to check if the user has logged in, to be used in middleware
+const loggedIn = (req, res, next) => {
+  if (req.user) {
     next();
-  });
+  } else {
+    res.send('{"error": "Not logged in!"}');
+  }
 };
 
-const selectAll = (req, next) => {
-  database.select(connection, (results) => {
-    req.custom = results;
-    next();
-  });
-};
+/*app.use(session({
+  secret: 'keyboard LOL cat',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {secure: true},
+}));*/
+
+passport.use(new LocalStrategy(
+    (username, password, done) => {
+      console.log('Here we go: ' + username);
+      let res = null;
+
+      const doLogin = (username, password) => {
+        return new Promise((resolve, reject) => {
+          db.login([username], connection, (result) => {
+            bcrypt.compare(password, result[0].passwd, function(err, res) {
+              // res == true
+              if (res) {
+                resolve(result);
+              } else {
+                reject(err);
+              }
+            });
+          });
+        });
+      };
+
+      return doLogin(username, password).then((result) => {
+        if (result.length < 1) {
+          console.log('undone');
+          return done(null, false);
+        } else {
+          console.log('done');
+          result[0].passwd = ''; // remove password from user's data
+          return done(null, result[0]); // result[0] is user's data, accessible as req.user
+        }
+      });
+    },
+));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+/*
+app.post('/login',
+    passport.authenticate('local',
+        {
+          successRedirect: '/node/front.html',
+          failureRedirect: '/node/login.html',
+        },
+    ),
+);
+*/
 
 app.post('/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
@@ -57,15 +114,15 @@ app.post('/login', function(req, res, next) {
       return next(err);
     }
     if (!user) { // if login not happening
-      return res.redirect('/login.html');
+      return res.redirect('/node/login.html');
     }
     req.logIn(user, function(err) {
       // send userID as cookie:
-      res.cookie('userID', req.user.uID);
+      res.cookie('userID', req.user.userID);
       if (err) {
         return next(err);
       }
-      return res.redirect('/intro.html'); // if login succesful
+      return res.redirect('/node/intro.html'); // if login succesful
     });
   })(req, res, next);
 });
@@ -88,15 +145,15 @@ app.post('/register', function(req, res, next) {
       return next(err);
     }
     if (!user) { // if login not happening
-      return res.redirect('/login.html');
+      return res.redirect('/node/login.html');
     }
     req.logIn(user, function(err) {
       // send userID as cookie:
-      res.cookie('userID', req.user.uID);
+      res.cookie('userID', req.user.userID);
       if (err) {
         return next(err);
       }
-      return res.redirect('/intro.html'); // if login succesful
+      return res.redirect('/node/intro.html'); // if login succesful
     });
   })(req, res, next);
 });
@@ -122,34 +179,53 @@ app.get('/', (req, res) => {
   }
 });
 
-// tallenna tiedosto
-app.post('/upload', upload.single('kuva'), (req, res, next) => {
-  console.log(req.file);
-  console.log(req.body);
-  next();
+// serve static files
+app.use(express.static('public'));
+// serve node_modules
+app.use('/modules', express.static('node_modules'));
+
+// database select calback
+const cb = (result, res) => {
+  console.log(result);
+  res.send(result);
+};
+
+
+// testataan toimiiko tietokanta
+db.select(connection, (results) => {
+  console.log(results);
 });
 
-// tee thumbnail
-app.use('/upload', (req, res, next) => {
-  resize.resizeImage(req.file.path, 150, './public/thumbs/' +
-      req.file.filename + '_thumb');
-  next();
-});
+const insertToDB = (data, res, next) => {
+  db.insert(data, connection, () => {
+    next();
+  });
+};
+
+const selectAll = (req, next) => {
+  db.select(connection, (results) => {
+    req.custom = results;
+    next();
+  });
+};
+
 
 // tallenna tiedot tietokantaan
 app.use('/upload', (req, res, next) => {
+  console.log('user id', req.user.userID);
+
   const data = [
-    req.body.fname,
-    req.body.lname,
-    req.file.filename,
-    req.file.filename + '_thumb',
+    req.body.FName,
+    req.body.LName,
+    req.body.Email,
+    req.body.passwd,
+    req.user.userID,
   ];
-  insertToDB(data, res, next);
+  db.insert(data, connection, next);
 });
 
-// hae päivitetyt tiedot tietokannasta
-app.use('/upload', (req, res, next) => {
-  selectAll(req, next);
+app.use('/upload', (req, res) => {
+  res.send('{"status": "insert OK"}');
 });
 
 // lähetä tiedot selaimeen
@@ -170,6 +246,20 @@ app.get('/test', (req,res) => {
   else res.send('hello not secure?');
 });
 
+app.set('trust proxy');
+const sslkey  = fs.readFileSync('/etc/pki/tls/private/ca.key');
+const sslcert = fs.readFileSync('/etc/pki/tls/certs/ca.crt');
+const options = {
+  key: sslkey,
+  cert: sslcert,
+};
 
-app.listen(8000); //normal http traffic
-https.createServer(options, app).listen(3000); //https traffic
+// start http and https servers, server address is https://servername/node/ e.g. https://10.114.34.45/node/
+// app.listen(3000);
+http.createServer((req, res) => {
+  const redir = 'https://' + req.headers.host + '/node' + req.url;
+  console.log('redir', redir);
+  res.writeHead(301, {'Location': redir});
+  res.end();
+}).listen(8000);
+https.createServer(options, app).listen(3000);

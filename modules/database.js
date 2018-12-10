@@ -14,7 +14,7 @@ const connect = () => {
   return connection;
 };
 
-const select = (connection, callback) => {
+const select = (connection, callback, res) => {
   // simple query
   connection.query(
       'SELECT * FROM user;',
@@ -22,7 +22,7 @@ const select = (connection, callback) => {
         console.log(results); // results contains rows returned by server
         // console.log(fields); // fields contains extra meta data about results, if available
         console.log(err);
-        callback(results);
+        callback(results, res);
       },
   );
 };
@@ -41,7 +41,7 @@ const insert = (data, connection, callback) => {
   );
 };
 
-const update = (data, connection) => {
+/*const update = (data, connection) => {
   // simple query
   connection.execute(
       'UPDATE bc_media SET category = ?, title = ?, details = ? WHERE mID = ? AND userID = ?;',
@@ -53,6 +53,7 @@ const update = (data, connection) => {
       },
   );
 };
+
 
 const del = (data, connection) => {
   // simple query
@@ -66,6 +67,7 @@ const del = (data, connection) => {
       },
   );
 };
+*/
 
 const login = (data, connection, callback) => {
   // simple query
@@ -100,8 +102,8 @@ module.exports = {
   connect: connect,
   select: select,
   insert: insert,
-  update: update,
-  del: del,
+  //update: update,
+  //del: del,
   login: login,
   register: register,
 };

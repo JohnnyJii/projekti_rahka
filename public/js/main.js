@@ -58,7 +58,7 @@ const sortItems = (items, rule) => {
 };
 
 const getData = () => {
-  fetch('./images').then(response => {
+  fetch('./uploads').then(response => {
     return response.json();
   }).then(items => {
     originalData = items;
@@ -169,10 +169,10 @@ const sendUpdate = (evt) => {
   evt.preventDefault();
   // get data from updatefrm and put it to body
   const data = JSON.stringify([
-    updatefrm.querySelector('input[name="category"]').value,
-    updatefrm.querySelector('input[name="title"]').value,
-    updatefrm.querySelector('textarea[name="details"]').value,
-    updatefrm.querySelector('input[name="mID"]').value,
+    updatefrm.querySelector('input[name="FName"]').value,
+    updatefrm.querySelector('input[name="LName"]').value,
+    updatefrm.querySelector('input[name="Email"]').value,
+    updatefrm.querySelector('input[name="passwd"]').value,
   ]);
   const settings = {
     method: 'PATCH',

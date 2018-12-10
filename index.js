@@ -17,6 +17,7 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+
 const multer = require('multer');
 const upload = multer({dest: 'public/uploads/'});
 
@@ -63,7 +64,7 @@ const loggedIn = (req, res, next) => {
 
 passport.use(new LocalStrategy(
     (username, password, done) => {
-      console.log('Here we go: ' + username);
+      console.log('Käyttäjätunnus: ' + username);
       let res = null;
 
       const doLogin = (username, password) => {
@@ -132,11 +133,10 @@ app.use('/register', (req, res, next) => {
   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
     // Store hash in your password DB.
     console.log('hash', hash);
-    db.register([req.body.username, hash], connection, () => {
+    db.register([req.body.FName, req.body.LName, req.body.username, hash], connection, () => {
       next();
     });
   });
-
 });
 
 app.post('/register', function(req, res, next) {
@@ -158,10 +158,12 @@ app.post('/register', function(req, res, next) {
   })(req, res, next);
 });
 
+
 app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('./login.html');
 });
+
 
 app.get('/', (req, res) => {
   // check for https
@@ -219,7 +221,8 @@ app.use('/upload', (req, res, next) => {
     req.body.LName,
     req.body.Email,
     req.body.passwd,
-    req.user.userID,
+
+
   ];
   db.insert(data, connection, next);
 });
@@ -259,7 +262,7 @@ const options = {
 http.createServer((req, res) => {
   const redir = 'https://' + req.headers.host + '/node' + req.url;
   console.log('redir', redir);
-  res.writeHead(301, {'Location': redir});
-  res.end();
+   res.end();
 }).listen(8000);
 https.createServer(options, app).listen(3000);
+

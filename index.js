@@ -120,6 +120,9 @@ app.post('/login', function(req, res, next) {
     req.logIn(user, function(err) {
       // send userID as cookie:
       res.cookie('userID', req.user.userID);
+      db.login([req.body.username, hash], connection, () => {
+        next();
+      });
       if (err) {
         return next(err);
       }

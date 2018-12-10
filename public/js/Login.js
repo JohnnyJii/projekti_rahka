@@ -1,3 +1,4 @@
+
 $('.form').find('input').on('keyup blur focus', function(e) {
 
   const $this = $(this),

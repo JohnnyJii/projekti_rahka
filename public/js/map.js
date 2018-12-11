@@ -28,6 +28,7 @@ function onLocationFound(e) {
   current_accuracy = L.circle(e.latlng, radius).addTo(map);
 
   console.log('cur pos', e.latlng);
+
   /*
    const url = 'https://10.114.32.162/node/lisaareitti';
 
@@ -87,6 +88,15 @@ function locate() {
 // interval
 setInterval(locate, 2000);
 
-//Live update
+//Send data to database
 
-//Route km
+// Define corridor options including width
+var options = {
+  corridor: 1000, // meters
+  className: 'route-corridor'
+};
+
+// Create a corridor and add to the map
+var corridor = L.corridor(coords, options);
+map.fitBounds(corridor.getBounds());
+map.addLayer(corridor);

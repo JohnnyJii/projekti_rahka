@@ -212,3 +212,31 @@ const deleteImage = (id) => {
 };
 
 initMap();
+
+const sendRoute = (evt) => {
+  evt.preventDefault();
+  // get data from updatefrm and put it to body
+  const data = JSON.stringify([
+    updatefrm.querySelector('input[name="reitti"]').value,
+     ]);
+  const settings = {
+    method: 'PATCH',
+    body: data,
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+  };
+  // app.patch('/images'.... needs to be implemented to index.js (remember body-parser)
+  fetch('./corridor', settings).then((response) => {
+    return response.json();
+  }).then((json) => {
+    console.log(json);
+    updatefrm.reset();
+    document.querySelector('#updateform button').
+        setAttribute('disabled', 'disabled');
+    // update list
+    getData();
+  });
+};
+
+frm.addEventListener('submit', sendForm);

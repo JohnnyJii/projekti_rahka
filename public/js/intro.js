@@ -49,7 +49,7 @@ function Countdown() {
 
 function laskenta() {
   totalSeconds--;
-  countdown.innerHTML = 'Aika alkaa: ' + totalSeconds;
+  countdown.innerHTML = 'Time starts: ' + totalSeconds;
   if (totalSeconds < 0) {
     clearInterval(aika);
     startTimer();
@@ -60,7 +60,7 @@ function laskenta() {
 
 let minutesLabel = document.getElementById('minutes');
 let secondsLabel = document.getElementById('seconds');
-let harjoitusAika = 720;
+let harjoitusAika = 3;
 
 function startTimer() {
   aika = setInterval(setTime, 1000);
@@ -77,7 +77,7 @@ function setTime() {
     let el = document.querySelector('#timer');
     let newEl = document.createElement('p');
     newEl.setAttribute('id', 'lopputekstidiv');
-    newEl.innerHTML = '<label id="lopputeksti">Testi päättyi</label>';
+    newEl.innerHTML = '<label id="lopputeksti">Test finished</label>';
     el.parentNode.replaceChild(newEl, el);
     let nappi = document.getElementById('kuvanappi');
     nappi.style = 'box-shadow: none;';
@@ -128,7 +128,7 @@ function showFileName(event) {
   let fileName = input.files[0].name;
 
   // use fileName however fits your app best, i.e. add it into a div
-  infoArea.textContent = 'Tiedosto valittu: ' + fileName;
+  infoArea.textContent = 'File chosen: ' + fileName;
 }
 
 const lomake = document.querySelector('#lomake');

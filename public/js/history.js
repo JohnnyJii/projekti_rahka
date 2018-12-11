@@ -20,7 +20,7 @@ window.onload = function () {
     animationEnabled: true,
     theme: "light2",
     title:{
-      text: "Graafi"
+      text: "Graph"
     },
     axisX:{
       title: "Date",

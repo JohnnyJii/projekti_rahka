@@ -145,6 +145,7 @@ app.post('/register', function(req, res, next) {
       return next(err);
     }
     if (!user) { // if login not happening
+      alert("Väärä sähköpostiosoite tai salasana!");
       return res.redirect('/node/login.html');
     }
     req.logIn(user, function(err) {

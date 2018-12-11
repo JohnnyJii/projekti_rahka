@@ -98,16 +98,16 @@ passport.use(new LocalStrategy(
 app.use(passport.initialize());
 app.use(passport.session());
 
-/*
+
 app.post('/login',
     passport.authenticate('local',
         {
-          successRedirect: '/node/front.html',
+          successRedirect: '/node/intro.html',
           failureRedirect: '/node/login.html',
         },
     ),
 );
-*/
+
 
 app.post('/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
@@ -120,9 +120,6 @@ app.post('/login', function(req, res, next) {
     req.logIn(user, function(err) {
       // send userID as cookie:
       res.cookie('userID', req.user.userID);
-      db.login([req.body.username, hash], connection, () => {
-        next();
-      });
       if (err) {
         return next(err);
       }
@@ -222,8 +219,8 @@ app.use('/upload', (req, res, next) => {
   const data = [
     req.body.FName,
     req.body.LName,
-    req.body.Email,
-    req.body.passwd,
+    req.body.username,
+    req.body.password,
 
 
   ];

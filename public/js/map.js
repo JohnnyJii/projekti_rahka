@@ -100,3 +100,5 @@ var options = {
 var corridor = L.corridor(coords, options);
 map.fitBounds(corridor.getBounds());
 map.addLayer(corridor);
+
+dataPoints.push(corridor);

@@ -21,7 +21,7 @@ function onLocationFound(e) {
     map.removeLayer(current_accuracy);
   }
 
-  var radius = e.accuracy / 75;
+  let radius = e.accuracy / 75;
 
   current_position = L.marker(e.latlng).addTo(map).bindPopup('You are here ');
 
@@ -91,13 +91,13 @@ setInterval(locate, 2000);
 //Send data to database
 
 // Define corridor options including width
-var options = {
+let options = {
   corridor: 1000, // meters
   className: 'route-corridor'
 };
 
 // Create a corridor and add to the map
-var corridor = L.corridor(coords, options);
+let corridor = L.corridor(coords, options);
 map.fitBounds(corridor.getBounds());
 map.addLayer(corridor);
 

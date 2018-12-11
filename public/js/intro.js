@@ -60,7 +60,7 @@ function laskenta() {
 
 let minutesLabel = document.getElementById('minutes');
 let secondsLabel = document.getElementById('seconds');
-let harjoitusAika = 3;
+let harjoitusAika = 720;
 
 function startTimer() {
   aika = setInterval(setTime, 1000);

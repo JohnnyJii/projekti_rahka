@@ -33,7 +33,7 @@ window.onload = function () {
       type: "line",
       dataPoints: [
         { x: new Date(), y: new corridor },
-        { x: new Date(), y: new corridor},
+        { x: new Date(), y: new corridor },
         { x: new Date(), y: new corridor },
         { x: new Date(), y: new corridor },
         { x: new Date(), y: new corridor },

@@ -32,18 +32,18 @@ window.onload = function () {
     data: [{
       type: "line",
       dataPoints: [
-        { x: new Date(), y: 1500 },
-        { x: new Date(), y: 1800 },
-        { x: new Date(), y: 2100 },
-        { x: new Date(), y: 1900 },
-        { x: new Date(), y: 2500 },
-        { x: new Date(), y: 2300 },
-        { x: new Date(), y: 2620 },
-        { x: new Date(), y: 2600 },
-        { x: new Date(), y: 3000 },
-        { x: new Date(), y: 2800 },
-        { x: new Date(), y: 3100 },
-        { x: new Date(), y: 3800 }
+        { x: new Date(), y: new corridor },
+        { x: new Date(), y: new corridor},
+        { x: new Date(), y: new corridor },
+        { x: new Date(), y: new corridor },
+        { x: new Date(), y: new corridor },
+        { x: new Date(), y: new corridor },
+        { x: new Date(), y: new corridor },
+        { x: new Date(), y: new corridor },
+        { x: new Date(), y: new corridor },
+        { x: new Date(), y: new corridor },
+        { x: new Date(), y: new corridor },
+        { x: new Date(), y: new corridor }
       ]
     }]
   });
